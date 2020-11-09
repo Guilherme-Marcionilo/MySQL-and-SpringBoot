@@ -1,15 +1,19 @@
 package com.example.demo.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -25,9 +29,11 @@ public class Categoria {
 	private String nome;
 	
 	@Column
+	@NotNull
 	private String categoria;
 	
 	@Column
+	@NotNull
 	private String descricao;
 	
 	@Column
@@ -37,8 +43,11 @@ public class Categoria {
 	@Column
 	private boolean pago;
 	
-	
-	
+	//CHAVE ESTRANGEIRA jogos
+	@Column
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL) 
+	@JsonIgnoreProperties("categoria")
+	private List<Jogos> jogos;
 	
 
 	public Long getId() {
@@ -87,6 +96,14 @@ public class Categoria {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public List<Jogos> getJogos() {
+		return jogos;
+	}
+
+	public void setJogos(List<Jogos> jogos) {
+		this.jogos = jogos;
 	}
 	
 	

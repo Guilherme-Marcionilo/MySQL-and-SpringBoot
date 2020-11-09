@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
@@ -19,38 +20,35 @@ import com.example.demo.model.Jogos;
 import com.example.demo.repository.JogosRepository;
 
 @RestController
+@RequestMapping("/jogos")
 public class JogosController {
 
-	public void addViewControllers(ViewControllerRegistry index) {
-		index.addViewController("/").setViewName("forward:/index.html");
-	}
-	
 	@Autowired
 	private JogosRepository repository;
 	
 	// Crud
-	@GetMapping("/produtos")
+	@GetMapping
 	public List<Jogos> findAllProduto() {
 		return repository.findAll();
 	}
 	
-	@GetMapping("/produtos/{id}")
+	@GetMapping("/{id}")
 	public Optional<Jogos> findByIDProduto(@PathVariable Long id) {
 		return repository.findById(id);
 	}
 	
-	@GetMapping("/produtos/{nome}/{descricao}")
+	@GetMapping("/{nome}/{descricao}")
 	public Optional<Jogos> findByDescricaoTitulo(@PathVariable String titulo,@PathVariable String descricao) {
 		return repository.findByTituloAndDescricao(titulo,descricao);
 	}
 	
-	@PostMapping("/produtos")
+	@PostMapping
 	public Jogos postProduto(@RequestBody Jogos objetoJogos) {
 		repository.save(objetoJogos);
 		return objetoJogos;
 	}
 	
-	@PutMapping
+	@PutMapping("/{id}")
 	public ResponseEntity<Jogos> putProduto(@RequestBody Jogos objetoJogos){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(objetoJogos));
 	}

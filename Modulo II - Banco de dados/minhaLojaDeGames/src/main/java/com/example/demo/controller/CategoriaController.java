@@ -40,7 +40,7 @@ public class CategoriaController implements WebMvcConfigurer{
 		return repository.findById(id);
 	}
 	
-	@GetMapping("/categorias/{nome}/{descricao}")
+	@GetMapping("/categoria/{nome}/{descricao}")
 	public Optional<Categoria> findByDescricaoCategoria (@PathVariable String nome,@PathVariable String descricao) {
 		return repository.findByDescricaoAndCategoria(nome,descricao);
 	}
@@ -51,7 +51,7 @@ public class CategoriaController implements WebMvcConfigurer{
 		return objetoCategoria;
 	}
 	
-	@PutMapping
+	@PutMapping("/categoria/{id}")
 	public ResponseEntity<Categoria> putCategoria(@RequestBody Categoria objetoCategoria){
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(objetoCategoria));
 	}

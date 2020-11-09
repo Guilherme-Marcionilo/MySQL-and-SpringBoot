@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -39,14 +40,11 @@ public class Jogos {
 	@NotNull
 	private String descricao;
 	
-	@OneToMany(mappedBy = "descricao", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("descricao")
-	private List<Jogos> categoria;
+	@ManyToOne
+	@JsonIgnoreProperties("jogos")
+	private Categoria categoria;
 	
 	
-	
-	
-
 	public long getId() {
 		return id;
 	}
@@ -87,13 +85,15 @@ public class Jogos {
 		this.descricao = descricao;
 	}
 
-	public List<Jogos> getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(List<Jogos> categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
+
 
 	
 

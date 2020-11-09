@@ -1,17 +1,12 @@
 package com.example.demo.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -33,10 +28,6 @@ public class Usuario {
 	@Column
 	@NotNull
 	private String senha;
-	
-	@OneToMany(mappedBy = "descricao", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("descricao")
-	private List<Usuario> categoria;
 	
 
 	public Long getId() {
@@ -71,13 +62,7 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public List<Usuario> getCategoria() {
-		return categoria;
-	}
 
-	public void setCategoria(List<Usuario> categoria) {
-		this.categoria = categoria;
-	}
 	
 	
 	
