@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "cdeaa99b-fb03-4762-ade0-2c4b2c833e45",
+		"name": "MinhaLojaDeGames",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pegue todas as categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/categoria/categorias",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pegue apenas por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/categoria/categorias/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"categorias",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inserindo categoria",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Luta\",\r\n    \"categoria\": \"Flinstons\",\r\n    \"descricao\": \"Jogo para maiores de 10 anos.\",\r\n    \"data\": \"2020-11-09\",\r\n    \"pago\": true,\r\n    \"jogos\": [],\r\n    \"id\": 1\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/categoria/categoria",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"categoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualiza Dado - PUT",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"New\",\r\n    \"categoria\": \"Flinstons\",\r\n    \"descricao\": \"Jogo para maiores de 17 anos.\",\r\n    \"data\": \"2020-11-09\",\r\n    \"pago\": false,\r\n    \"jogos\": [],\r\n    \"id\": 2\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/categoria/categoria/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"categoria",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletando categoria",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/categoria/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categoria",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
