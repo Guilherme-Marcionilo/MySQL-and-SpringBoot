@@ -1,6 +1,6 @@
 package org.generation.blogPessoal.controller;
 
-import org.generation.blogPessoal.PostagemModel;
+import org.generation.blogPessoal.model.PostagemModel;
 import org.generation.blogPessoal.repository.PostagemRepository;
 
 import java.util.List;

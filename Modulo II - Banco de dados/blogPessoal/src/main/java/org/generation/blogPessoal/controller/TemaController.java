@@ -2,7 +2,7 @@ package org.generation.blogPessoal.controller;
 
 import java.util.List;
 
-import org.generation.blogPessoal.Tema;
+import org.generation.blogPessoal.model.Tema;
 import org.generation.blogPessoal.repository.TemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,7 +52,7 @@ public class TemaController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
 	
